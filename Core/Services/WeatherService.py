@@ -4,11 +4,13 @@ from abc import ABCMeta
 class WeatherService(AbstractServiceBase):
     __metaclass__ = ABCMeta
 
-    def __init__(self, name, endpoint):
-        super(WeatherService, self).__init__(name, endpoint)
+    def __init__(self, handler, notifiers, **kwargs):
+        super(WeatherService, self).__init__('WeatherService', 'WeatherEndpoint'
+                                             , handler, notifiers, **kwargs)
 
     def Start(self):
-        print 'Starting Weather'
+        print "Starting: %s\nEndpoint: %s" % (self.Name, self.Endpoint)
+        self.Handler(self.Notifiers, weatherData=self.HandlerArgs)
 
     def Stop(self):
         print 'Stopping'
