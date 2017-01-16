@@ -7,9 +7,7 @@
 
 from Core.Handlers.CommuteHandler import CommuteHandler
 from Core.Notifiers.Abstract.INotifier import INotifier
-from Core.Notifiers.PushbulletNotifier import PushbulletNotifier
 from Core.Services.Abstract.ServiceBase import ServiceBase
-from Core.Services.WeatherService import WeatherService
 
 #TODO: See how to handle Handlers
 notifiers = INotifier.__subclasses__()
