@@ -7,4 +7,4 @@ def CommuteHandler(notifiers, **kwargs):
     print "CommuteHandler handling data " + weather
 
     for notifier in notifiers:
-        notifier(**kwargs)
+        notifier.Notify(**kwargs)

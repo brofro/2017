@@ -14,6 +14,6 @@ class WeatherService(AbstractServiceBase):
             handler(self.Notifiers, weatherData=self.HandlerArgs, endpoint=self.Endpoint)
 
     def Stop(self):
-        print "Stopping: %s\n" % self.Name
+        print "\nStopping: %s" % self.Name
 
 
