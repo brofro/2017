@@ -1,4 +1,4 @@
-from test.Services.WeatherService import WeatherService
+from Core.Services.WeatherService import WeatherService
 
 service = WeatherService('WeatherService', 'WeatherEndpoint')
 print service.Name

@@ -1,4 +1,4 @@
-from test.Services.Abstract.AbstractServiceBase import AbstractServiceBase
+from Core.Services.Abstract.AbstractServiceBase import AbstractServiceBase
 from abc import ABCMeta
 
 class WeatherService(AbstractServiceBase):
