@@ -1,4 +1,5 @@
-#The handler which processes raw data and turns into Commute relevant data
+#The handler which processes raw data and turns into Commute relevant
+#TODO Turn into class with static method collection
 def CommuteHandler(notifiers, **kwargs):
     if kwargs is None:
         print ("CommuteHandler args error")

@@ -9,7 +9,7 @@ from Core.Handlers.CommuteHandler import CommuteHandler
 from Core.Notifiers.Abstract.INotifier import INotifier
 from Core.Services.Abstract.ServiceBase import ServiceBase
 
-#TODO: See how to handle Handlers
+#TODO: See why reflection is inconsistent
 notifiers = INotifier.__subclasses__()
 services = ServiceBase.__subclasses__()
 
