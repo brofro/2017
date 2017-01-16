@@ -6,10 +6,20 @@
 #Handler args are placeholders for now
 
 from Core.Handlers.CommuteHandler import CommuteHandler
+from Core.Notifiers.Abstract.INotifier import INotifier
 from Core.Notifiers.PushbulletNotifier import PushbulletNotifier
+from Core.Services.Abstract.ServiceBase import ServiceBase
 from Core.Services.WeatherService import WeatherService
 
-service = WeatherService([CommuteHandler], [PushbulletNotifier()], handlerArgs="**75F in Oakland**")
+#TODO: See how to handle Handlers
+notifiers = INotifier.__subclasses__()
+services = ServiceBase.__subclasses__()
 
-service.Start()
-service.Stop()
+notifierObjects = []
+for notifier in notifiers:
+    notifierObjects.append(notifier())
+
+for service in services:
+    serviceObject = service([CommuteHandler], notifierObjects, handlerArgs="**75F in Oakland**")
+    serviceObject.Start()
+    serviceObject.Stop()

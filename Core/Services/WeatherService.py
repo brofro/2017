@@ -15,5 +15,3 @@ class WeatherService(ServiceBase):
 
     def Stop(self):
         print ("\nStopping: %s" % self.Name)
-
-
