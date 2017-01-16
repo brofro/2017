@@ -1,7 +1,7 @@
-from Core.Services.Abstract.AbstractServiceBase import AbstractServiceBase
+from Core.Services.Abstract.ServiceBase import ServiceBase
 from abc import ABCMeta
 
-class WeatherService(AbstractServiceBase):
+class WeatherService(ServiceBase):
     __metaclass__ = ABCMeta
 
     def __init__(self, handler, notifiers, **kwargs):
