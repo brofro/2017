@@ -10,7 +10,8 @@ class WeatherService(AbstractServiceBase):
 
     def Start(self):
         print "Starting: %s\nEndpoint: %s" % (self.Name, self.Endpoint)
-        self.Handler(self.Notifiers, weatherData=self.HandlerArgs)
+        for handler in self.Handlers:
+            handler(self.Notifiers, weatherData=self.HandlerArgs)
 
     def Stop(self):
         print 'Stopping'
