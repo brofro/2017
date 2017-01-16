@@ -12,5 +12,5 @@ class PushbulletNotifier(INotifier):
         super(PushbulletNotifier, self).__init__('PushbulletEndpoint')
 
     def Notify(self, **kwargs):
-        print "PushbulletNotifier sending data %s to %s" % (kwargs.get('weatherData'), self.Destination)
+        print ("PushbulletNotifier sending data %s to %s" % (kwargs.get('weatherData'), self.Destination))
         GetHelper(self.Destination)
