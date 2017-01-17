@@ -19,7 +19,7 @@ class Bootstrapper(object):
 
     def GetHandlers(self):
         handlers = []
-        print("Bootstrapper.GetHandlers initializing handlers")
+        print("Bootstrapper.GetHandlers getting static handlers")
         for handler in IHandler.__subclasses__():
             handlers.append(handler.Handle)
         return handlers
