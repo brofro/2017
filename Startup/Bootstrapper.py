@@ -3,6 +3,7 @@ import Core.Notifiers.PushbulletNotifier
 import Core.Services.WeatherService
 
 #Real imports
+from Core.Handlers.Abstract.IHandler import IHandler
 from Core.Handlers.CommuteHandler import CommuteHandler
 from Core.Notifiers.Abstract.INotifier import INotifier
 from Core.Services.Abstract.ServiceBase import ServiceBase
@@ -16,11 +17,18 @@ class Bootstrapper(object):
             notifiers.append(notifier())
         return notifiers
 
-    def GetSerivces(self, notifiers):
+    def GetHandlers(self):
+        handlers = []
+        print("Bootstrapper.GetHandlers initializing handlers")
+        for handler in IHandler.__subclasses__():
+            handlers.append(handler.Handle)
+        return handlers
+
+    def GetSerivces(self, handlers, notifiers):
         services = []
         print("Bootstrapper.GetServices initializing services")
         for service in ServiceBase.__subclasses__():
-            services.append(service([CommuteHandler], notifiers, handlerArgs="**75F in Oakland"))
+            services.append(service(handlers, notifiers, handlerArgs="**75F in Oakland"))
         return services
 
     def StartServices(self, services):
