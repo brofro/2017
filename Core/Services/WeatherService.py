@@ -9,7 +9,7 @@ class WeatherService(ServiceBase):
                                              , handler, notifiers, **kwargs)
 
     def Start(self):
-        print("Starting: %s\nEndpoint: %s\n" % (self.Name, self.Endpoint))
+        print("Starting: %s :: %s\n" % (self.Name, self.Endpoint))
         for handler in self.Handlers:
             handler(self.Notifiers, weatherData=self.HandlerArgs, endpoint=self.Endpoint)
 
