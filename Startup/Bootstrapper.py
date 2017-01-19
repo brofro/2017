@@ -28,7 +28,7 @@ class Bootstrapper(object):
         services = []
         print("Bootstrapper.GetServices initializing services")
         for service in ServiceBase.__subclasses__():
-            services.append(service(handlers, notifiers, handlerArgs="**75F in Oakland"))
+            services.append(service(handlers, notifiers))
         return services
 
     def StartServices(self, services):

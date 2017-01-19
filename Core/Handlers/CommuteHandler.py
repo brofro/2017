@@ -4,22 +4,14 @@ from Core.Handlers.Abstract.IHandler import IHandler
 
 
 class CommuteHandler(IHandler):
+
     @staticmethod
     def Handle(notifiers, **kwargs):
         if kwargs is None:
             print ("CommuteHandler.Handle found no args")
 
         weather = kwargs.get('weatherData')
-        print ("Commutehandler handling data " + weather)
+        print ("Commutehandler handling data " +
+               weather.name + " has " + weather.weather[0]['main'])
         for notifier in notifiers:
             notifier.Notify(**kwargs)
-
-def CommuteHandler(notifiers, **kwargs):
-    if kwargs is None:
-        print ("CommuteHandler args error")
-        return
-    weather = kwargs.get('weatherData')
-    print ("CommuteHandler handling data " + weather)
-
-    for notifier in notifiers:
-        notifier.Notify(**kwargs)

@@ -28,3 +28,7 @@ class ServiceBase(object):
     @abstractmethod
     def Stop(self):
         pass
+
+    @abstractmethod
+    def GetData(self):
+        pass

@@ -1,12 +1,14 @@
-import urllib
+from urllib import request
+from urllib.parse import urlencode
 
 
 def GetHelper(url, **kwargs):
     print("GET request to %s sent" % url)
-    #response = urllib.request.urlopen(url)
-    #return response
 
+    #Append query string
+    if kwargs.get('queryString') is not None:
+        queryString = urlencode(kwargs.get('queryString'))
+        url += "?%s" % queryString
 
-#a = "http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=194081ece66e11a6bf8e2e9c1dda3a4d"
-#response = GetHelper(a).read()
-#respObj = GetCurrentWeatherResponse(response)
+    response = request.urlopen(url)
+    return response
