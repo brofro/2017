@@ -9,7 +9,7 @@ class PushbulletNotifier(INotifier):
     __metaclass__ = ABCMeta
 
     def __init__(self):
-        super(PushbulletNotifier, self).__init__('PushbulletEndpoint')
+        super().__init__('PushbulletEndpoint')
 
     def Notify(self, **kwargs):
         weatherData = kwargs.get('weatherData')

@@ -1,3 +1,7 @@
+'''
+The set of REST helper functions used to communicate to external services
+'''
+
 from urllib import request
 from urllib.parse import urlencode
 

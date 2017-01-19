@@ -1,3 +1,7 @@
+'''
+The distinct WeatherService
+'''
+
 from Core.Services.Abstract.ServiceBase import ServiceBase
 from abc import ABCMeta
 
@@ -10,9 +14,7 @@ class WeatherService(ServiceBase):
     __metaclass__ = ABCMeta
 
     def __init__(self, handler, notifiers, **kwargs):
-        provider = OpenWeatherApiConstants
-        super(WeatherService, self).__init__(provider.Name, provider.MainRoute
-                                             , handler, notifiers, **kwargs)
+        super().__init__(handler, notifiers, OpenWeatherApiConstants, **kwargs)
 
     def Start(self):
         print("Starting: %s :: %s\n" % (self.Name, self.Endpoint))
