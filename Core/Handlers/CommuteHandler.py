@@ -1,8 +1,10 @@
-#The handler which processes raw data and turns into Commute relevant
-#TODO Turn into class with static method collection
 from Core.Handlers.Abstract.IHandler import IHandler
 
 
+'''
+The distinct handler which processes data and determines if Commute is affected
+This handler will send Commute relevant information to the provided INotifiers
+'''
 class CommuteHandler(IHandler):
 
     @staticmethod

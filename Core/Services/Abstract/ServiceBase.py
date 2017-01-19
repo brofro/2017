@@ -34,7 +34,9 @@ class ServiceBase(object):
     @abstractmethod
     def Stop(self):
         pass
+
     #Retrieves data delegated to this service
+    #TODO Refactor this since we can only get one set of data from one endpoint using this way
     @abstractmethod
     def GetData(self):
         pass

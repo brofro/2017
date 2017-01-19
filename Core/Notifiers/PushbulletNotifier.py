@@ -1,10 +1,11 @@
-#The notfier which sends to pushbullet
 from abc import ABCMeta
 
 from Core.Notifiers.Abstract.INotifier import INotifier
 from Utility.Communication.HttpRequestHelper import GetHelper
 
-
+'''
+The distinct notifier which sends data to Pushbullet API
+'''
 class PushbulletNotifier(INotifier):
     __metaclass__ = ABCMeta
 

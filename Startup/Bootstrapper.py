@@ -8,6 +8,9 @@ from Core.Handlers.CommuteHandler import CommuteHandler
 from Core.Notifiers.Abstract.INotifier import INotifier
 from Core.Services.Abstract.ServiceBase import ServiceBase
 
+'''
+The bootstrapper class which provides methods for application initialization
+'''
 class Bootstrapper(object):
 
     def GetNotifiers(self):

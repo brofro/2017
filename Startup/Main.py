@@ -1,4 +1,3 @@
-#The main runnner class to be started by the master init.py
 from Startup.Bootstrapper import Bootstrapper
 
 

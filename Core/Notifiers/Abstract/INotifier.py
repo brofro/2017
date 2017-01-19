@@ -1,6 +1,10 @@
 from abc import ABCMeta, abstractmethod
 
-
+'''
+Base notifier class
+Notifier classes are responsible for sending data to a destination
+Notifiers are either given response data fromm IServices or reformatted/reprocessed data
+'''
 class INotifier(object):
     __metaclass__ = ABCMeta
 

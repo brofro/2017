@@ -1,11 +1,11 @@
-'''
-The set of REST helper functions used to communicate to external services
-'''
-
 from urllib import request
 from urllib.parse import urlencode
 
+'''
+The set of REST helpers to communicate with external services
+'''
 
+#Sends an HTTP GET with optional queryString arguements to the provided url
 def GetHelper(url, **kwargs):
     print("GET request to %s sent" % url)
 
