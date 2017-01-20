@@ -17,6 +17,9 @@ class WeatherService(ServiceBase):
     def Start(self):
         print("Starting: %s :: %s\n" % (self.Name, self.Endpoint))
 
+        if not self.IsApiKeyValid():
+            return
+
         data = self.GetData()
 
         for handler in self.Handlers:
@@ -27,7 +30,8 @@ class WeatherService(ServiceBase):
 
     def GetData(self):
         #TODO Find a way to import city.list.json from http://bulk.openweathermap.org/sample/
-        query = {'q':'Oakland', 'appid': OpenWeatherApiConstants.ApiKey}
+
+        query = {'q':'Oakland', 'appid': self.Provider.ApiKey}
 
         route = OpenWeatherApiConstants.GetRoute(OpenWeatherApiConstants.CurrentWeatherEndpoint)
         response = GetHelper(route, queryString=query)
