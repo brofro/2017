@@ -33,7 +33,7 @@ class WeatherService(ServiceBase):
 
         query = {'q':'Oakland', 'appid': self.Provider.ApiKey}
 
-        route = OpenWeatherApiConstants.GetRoute(OpenWeatherApiConstants.CurrentWeatherEndpoint)
+        route = self.Provider.GetRoute(OpenWeatherApiConstants.CurrentWeatherEndpoint)
         response = GetHelper(route, queryString=query)
         return GetCurrentWeatherResponse(response.read())
 
