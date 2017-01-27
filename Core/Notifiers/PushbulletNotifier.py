@@ -18,7 +18,7 @@ class PushbulletNotifier(INotifier):
         weatherData = kwargs.get('weatherData')
         print ("PushbulletNotifier sending data %s to %s" % (weatherData.name + " has " + weatherData.weather[0]['main'], self.Provider.Name))
 
-        if not self.IsApiKeyValid():
+        if not self.Provider.IsApiKeyValid():
             return
 
         route = self.Provider.GetRoute(PushbulletApiConstants.CreatePushEndpoint)

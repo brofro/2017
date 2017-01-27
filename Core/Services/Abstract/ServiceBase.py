@@ -17,7 +17,7 @@ class ServiceBase(object):
         self.Notifiers = notifiers
 
         #The API provider for this servicce
-        self.Provider = provider
+        self.Provider = provider()
 
         #Providers should always provide name and mainroute
         self.Name = self.Provider.Name
@@ -43,11 +43,3 @@ class ServiceBase(object):
     @abstractmethod
     def GetData(self):
         pass
-
-    #Common method to check if provider's ApiKey is valid
-    #TODO Actually try to hit API to verify key is working
-    def IsApiKeyValid(self):
-        if self.Provider.ApiKey is "":
-            print("API Key for %s is missing" % self.Provider.Name)
-            return False
-        return True

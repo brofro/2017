@@ -17,7 +17,7 @@ class WeatherService(ServiceBase):
     def Start(self):
         print("Starting: %s :: %s\n" % (self.Name, self.Endpoint))
 
-        if not self.IsApiKeyValid():
+        if not self.Provider.IsApiKeyValid():
             return
 
         data = self.GetData()

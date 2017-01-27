@@ -1,4 +1,9 @@
 #These useless imports are not ideal but right now they are making reflection possible by hard binding
+import json
+import os
+
+from pathlib import Path
+
 import Core.Notifiers.PushbulletNotifier
 import Core.Services.WeatherService
 
@@ -42,3 +47,14 @@ class Bootstrapper(object):
     def StopServices(self, services):
         for service in services:
             service.Stop()
+
+'''
+curdir = os.getcwd()
+propFile = Path(curdir + "/../" + "properties.json")
+if propFile.is_file():
+    with open(propFile) as props:
+        prop = json.load(props)
+    print("yay")
+
+print("")
+'''
