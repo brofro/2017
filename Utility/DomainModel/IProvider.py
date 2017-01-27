@@ -14,7 +14,6 @@ class IProvider(object):
     def IsApiKeyValid(self):
         pass
 
-    @staticmethod
     def PrintInvalidKey(self):
         print("API Key for %s Provider was invalid" % self.Name)
 
