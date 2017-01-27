@@ -18,11 +18,13 @@ The bootstrapper class which provides methods for application initialization
 '''
 class Bootstrapper(object):
 
-    def GetNotifiers(self):
+    PropertiesFile = "properties.json"
+
+    def GetNotifiers(self, keyCollection):
         notifiers = []
         print("Bootstrapper.GetNotifiers initializing notifiers")
         for notifier in INotifier.__subclasses__():
-            notifiers.append(notifier())
+            notifiers.append(notifier(keyCollection))
         return notifiers
 
     def GetHandlers(self):
@@ -32,11 +34,11 @@ class Bootstrapper(object):
             handlers.append(handler.Handle)
         return handlers
 
-    def GetSerivces(self, handlers, notifiers):
+    def GetSerivces(self, handlers, notifiers, keyCollection):
         services = []
         print("Bootstrapper.GetServices initializing services")
         for service in ServiceBase.__subclasses__():
-            services.append(service(handlers, notifiers))
+            services.append(service(handlers, notifiers, keyCollection))
         return services
 
     def StartServices(self, services):
@@ -48,13 +50,27 @@ class Bootstrapper(object):
         for service in services:
             service.Stop()
 
-'''
-curdir = os.getcwd()
-propFile = Path(curdir + "/../" + "properties.json")
-if propFile.is_file():
-    with open(propFile) as props:
-        prop = json.load(props)
-    print("yay")
+    def LoadApiKeys(self):
+        curdir = os.getcwd()
+        propFile = Path(curdir + "/../" + self.PropertiesFile)
+        apiKeys = {}
 
-print("")
-'''
+        if not propFile.is_file():
+            print("No properties file found in ROOT directory")
+            return None
+
+        with open(propFile) as pFile:
+            props = json.load(pFile)
+
+        if props.get("apiKeys") is None:
+            print("No apiKeys object found")
+            return None
+
+        if type(props.get("apiKeys")) is not list:
+            print("apiKeys object is of incorrect format")
+            return None
+
+        for key in props.get("apiKeys"):
+            apiKeys.update(key)
+
+        return apiKeys

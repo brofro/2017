@@ -8,8 +8,8 @@ Notifiers are either given response data fromm IServices or reformatted/reproces
 class INotifier(object):
     __metaclass__ = ABCMeta
 
-    def __init__(self, provider):
-        self.Provider = provider
+    def __init__(self, provider, keyCollection):
+        self.Provider = provider(keyCollection)
 
     @abstractmethod
     def Notify(self, **kwargs):

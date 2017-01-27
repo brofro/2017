@@ -7,9 +7,8 @@ class PushbulletApiConstants(IProvider):
 
     CreatePushEndpoint = "pushes"
 
-    def __init__(self):
-        super().__init__("Pushbullet", "https://api.pushbullet.com/v2")
-        self.ApiKey = ""
+    def __init__(self, keyCollection):
+        super().__init__("Pushbullet", "https://api.pushbullet.com/v2", keyCollection)
 
 
     def IsApiKeyValid(self):

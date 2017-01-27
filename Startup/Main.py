@@ -18,9 +18,10 @@ Sequence
 '''
 
 bootstrapper = Bootstrapper()
-notifiers = bootstrapper.GetNotifiers()
+keyCollection = bootstrapper.LoadApiKeys()
+notifiers = bootstrapper.GetNotifiers(keyCollection)
 handlers = bootstrapper.GetHandlers()
-services = bootstrapper.GetSerivces(handlers, notifiers)
+services = bootstrapper.GetSerivces(handlers, notifiers, keyCollection)
 
 bootstrapper.StartServices(services)
 bootstrapper.StopServices(services)

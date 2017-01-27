@@ -11,8 +11,8 @@ The distinct notifier which sends data to Pushbullet API
 class PushbulletNotifier(INotifier):
     __metaclass__ = ABCMeta
 
-    def __init__(self):
-        super().__init__(PushbulletApiConstants)
+    def __init__(self, keyCollection):
+        super().__init__(PushbulletApiConstants, keyCollection)
 
     def Notify(self, **kwargs):
         weatherData = kwargs.get('weatherData')

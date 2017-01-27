@@ -8,7 +8,7 @@ Once the handler processes the data, it will pass it to each notfier for sending
 class ServiceBase(object):
     __metaclass__ = ABCMeta
 
-    def __init__(self, handlers, notifiers, provider, **kwargs):
+    def __init__(self, handlers, notifiers, provider, keyCollection):
 
         #The handlers to process each the data
         self.Handlers = handlers
@@ -17,14 +17,11 @@ class ServiceBase(object):
         self.Notifiers = notifiers
 
         #The API provider for this servicce
-        self.Provider = provider()
+        self.Provider = provider(keyCollection)
 
         #Providers should always provide name and mainroute
         self.Name = self.Provider.Name
         self.Endpoint = self.Provider.MainRoute
-
-        #TODO: Placeholders for now
-        self.HandlerArgs = kwargs.get('handlerArgs', "DEFAULT")
 
     #Starts the service
     #TODO Start methods should spawn worker threads for data collection => handling => notifying main sequence

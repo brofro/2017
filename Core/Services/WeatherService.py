@@ -11,8 +11,8 @@ The distinct WeatherService which uses the provider to retrieve various kinds of
 class WeatherService(ServiceBase):
     __metaclass__ = ABCMeta
 
-    def __init__(self, handler, notifiers, **kwargs):
-        super().__init__(handler, notifiers, OpenWeatherApiConstants, **kwargs)
+    def __init__(self, handler, notifiers, keyCollection):
+        super().__init__(handler, notifiers, OpenWeatherApiConstants, keyCollection)
 
     def Start(self):
         print("Starting: %s :: %s\n" % (self.Name, self.Endpoint))
@@ -33,7 +33,7 @@ class WeatherService(ServiceBase):
 
         query = {'q':'Oakland', 'appid': self.Provider.ApiKey}
 
-        route = self.Provider.GetRoute(OpenWeatherApiConstants.CurrentWeatherEndpoint)
+        route = self.Provider.GetRoute(self.Provider.CurrentWeatherEndpoint)
         response = GetHelper(route, queryString=query)
         return GetCurrentWeatherResponse(response.read())
 

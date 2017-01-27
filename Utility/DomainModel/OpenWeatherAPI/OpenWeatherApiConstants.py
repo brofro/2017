@@ -7,9 +7,8 @@ class OpenWeatherApiConstants(IProvider):
 
     CurrentWeatherEndpoint = "weather"
 
-    def __init__(self):
-        super().__init__("OpenWeather", "http://api.openweathermap.org/data/2.5")
-        self.ApiKey = ""
+    def __init__(self, keyCollection):
+        super().__init__("OpenWeather", "http://api.openweathermap.org/data/2.5", keyCollection)
 
     def IsApiKeyValid(self):
 
